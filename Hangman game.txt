@@ -1,0 +1,130 @@
+word_list =  [
+    # Short / Easy Words
+    "apple", "banana", "camel", "desk", "eagle", "forest", "guitar", 
+    "house", "iron", "jacket", "kitten", "lemon", "mango", "nest", 
+    "ocean", "pencil", "queen", "rabbit", "silver", "tiger", "uncles", "aunty"
+    "violet", "window", "xenon", "yellow", "zebra",
+    
+    # Medium Words
+    "atmosphere", "butterfly", "calculator", "dinosaur", "elephant", 
+    "flamingo", "galaxy", "horizon", "infinite", "journey", "kingdom", 
+    "labyrinth", "mysterious", "navigator", "octopus", "pyramid", 
+    "quantum", "revolver", "sapphire", "telescope", "universe", 
+    "volcano", "wilderness", "xylophone", "yesterday", "zodiac",
+    
+    # Difficult / Long Words
+    "ambiguous", "benevolent", "cryptography", "disillusion", "eccentric", 
+    "fluorescent", "gargantuan", "hieroglyph", "idiosyncrasy", "juxtaposition", 
+    "kaleidoscope", "luminescent", "magnanimous", "nefarious", "oblivious", 
+    "paraphernalia", "quizzical", "reminiscent", "synchronicity", "transcend", 
+    "ubiquitous", "vicarious", "whimsical", "xenophobia", "zealous"
+]
+import random
+end_of_game = False 
+game_ended = False
+stages =[ '''+---+ 
+            |   |
+            O   |
+          / | \ | 
+           / \  |
+                |
+           ''',
+'''         +---+ 
+            |   |
+            O   |
+          / | \ | 
+           /    |
+                |''' ,
+'''         +---+ 
+            |   |
+            O   |
+          / | \ | 
+                |
+                |''' ,
+'''         +---+ 
+            |   |
+            O   |
+          / |   | 
+                |
+                |''' ,
+'''         +---+ 
+            |   |
+            O   |
+            |   | 
+                |
+                |''',
+'''         +---+ 
+            |   |
+            O   |
+                |
+                |
+                |''' ,
+'''         +---+ 
+            |   |
+                |
+                | 
+                |
+                |''']
+
+                
+chosen_variable = random.choice(word_list)
+length_chosen_word = len(chosen_variable)
+
+
+lives = 6
+
+print(f"the solution is {chosen_variable}")
+display = []
+for letter in chosen_variable:
+   display += "_"
+
+while not end_of_game and not game_ended:
+    guess = input("guess a letter :").lower()
+
+    for letter in range(len(chosen_variable)):
+        if chosen_variable[letter] == guess:
+            display[letter] = guess
+           
+
+
+    
+        
+            
+    
+    for letter in chosen_variable:
+        if  letter == guess:
+            print("right")
+            
+        else:
+            print("wrong")
+
+
+    
+    if guess not in chosen_variable :
+            lives -= 1
+    print(lives)
+
+    print(stages[lives])
+        
+
+
+    
+
+    
+     
+
+
+    print(display)
+    if "_" not in display:
+        end_of_game = True
+    elif lives == 0 :
+        game_ended  = True
+       
+if game_ended == True:
+    
+    print("you lose your man is hanged")
+elif end_of_game == True:
+    
+    print("you win")
+
+    
